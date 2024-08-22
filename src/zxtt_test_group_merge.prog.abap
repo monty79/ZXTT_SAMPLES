@@ -1,7 +1,7 @@
 *&---------------------------------------------------------------------*
 *& Merge test in XTT
 *&---------------------------------------------------------------------*
-report ZTEST_GROUP_MERGE_XTT.
+report ZXTT_TEST_GROUP_MERGE.
 types
 : begin of GTY_TAB
 ,   LEV1_ID     type HROBJID
@@ -62,8 +62,10 @@ start-of-selection.
   ).
 
 end-of-selection.
-  data(LO_XTT) = new ZCL_XTT_EXCEL_XLSX( new ZCL_XTT_FILE_SMW0( 'ZTEST_GROUP_MERGE_XTT.XLSX' ) ).
-  set HANDLER LCL_HANDLER=>ON_TREE activation abap_true.
+  data(LO_XTT) = new ZCL_XTT_EXCEL_XLSX(
+    new ZCL_XTT_FILE_SMW0( 'ZTEST_GROUP_MERGE_XTT.XLSX' ) ).
+*    new ZCL_XTT_FILE_SMW0( 'ZTEST_GROUP_MERGE_G.XLSX' ) ).
+*  set HANDLER LCL_HANDLER=>ON_TREE activation abap_true.
   LO_XTT->MERGE( IS_BLOCK = GS_DATA ).
-  set HANDLER LCL_HANDLER=>ON_TREE activation abap_false.
+*  set HANDLER LCL_HANDLER=>ON_TREE activation abap_false.
   LO_XTT->DOWNLOAD( ).
