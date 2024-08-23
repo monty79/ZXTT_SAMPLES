@@ -20,16 +20,19 @@ start-of-selection.
     T = value #(
         ( CELL_BREAK = 'Ячейка 1 строка' && CL_ABAP_CHAR_UTILITIES=>CR_LF && 'Другая строка'  )
         ( CELL_BREAK = 'Ячейка 2 строка' && CL_ABAP_CHAR_UTILITIES=>NEWLINE && 'Другая строка'  )
-        ( CELL_BREAK = 'Ячейка 3 строка не другая строка'  )
+        ( CELL_BREAK =
+        'Ячейка 3 строка' &&
+        `</w:t></w:r></w:p><w:p><w:pPr><w:pStyle w:val="BodyText"/><w:spacing w:after="0"/></w:pPr><w:r><w:t>`
+        && 'не другая строка'  )
       )
     )
   .
 
 end-of-selection.
-  new ZCL_XTT_EXCEL_XLSX(
-    new ZCL_XTT_FILE_SMW0( 'ZXTT_TEST_CRLF.XLSX' )
-      )->MERGE( IS_BLOCK = LS_DATA
-    )->DOWNLOAD( ).
+*  new ZCL_XTT_EXCEL_XLSX(
+*    new ZCL_XTT_FILE_SMW0( 'ZXTT_TEST_CRLF.XLSX' )
+*      )->MERGE( IS_BLOCK = LS_DATA
+*    )->DOWNLOAD( ).
 
   new ZCL_XTT_WORD_DOCX(
     new ZCL_XTT_FILE_SMW0( 'ZXTT_TEST_CRLF.DOCX' )
